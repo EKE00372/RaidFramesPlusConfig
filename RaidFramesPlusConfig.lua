@@ -18,8 +18,22 @@ frame1.NineSlice.Text:SetText(locales[1])
 
 
 local fs = frame1:CreateFontString(nil, nil, "GameFontNormalLeft")
-fs:SetPoint("TOPLEFT", frame1, 10, -30)
+fs:SetPoint("TOPLEFT", frame1, 30, -30)
 fs:SetText(locales[2])
+local infoTip = CreateFrame("Button", nil, frame1)
+infoTip:SetSize(16, 16)
+infoTip:SetPoint("TOPLEFT", frame1, 10, -30)
+infoTip.Icon = infoTip:CreateTexture(nil, "ARTWORK")
+infoTip.Icon:SetAllPoints()
+infoTip.Icon:SetTexture("Interface\\FriendsFrame\\InformationIcon")
+infoTip:SetHighlightTexture("Interface\\FriendsFrame\\InformationIcon")
+local infoTipText = locales[13]
+infoTip:SetScript("OnEnter", function(self)
+	GameTooltip:SetOwner(infoTip, "ANCHOR_TOPRIGHT", 0, 10)
+	GameTooltip:AddLine(infoTipText, 1, 1, 1, true)
+	GameTooltip:Show()
+end)
+infoTip:SetScript("OnLeave", function() GameTooltip:Hide() end)
 
 local play
 local function onclick1(self)
@@ -44,10 +58,10 @@ for i =1, 7 do
 	button:SetID(i)
 	local text
 	if i == 7 then
-		text = IGNORE
+		text = locales[11]
 	else
 		if i == 6 then
-			text = HUD_EDIT_MODE_SETTING_AURA_FRAME_ICON_WRAP_DOWN
+			text = locales[12]
 		else
 			text = i
 		end
@@ -349,7 +363,7 @@ end)
 local button = CreateFrame("Button", nil, frame1, "UIMenuButtonStretchTemplate") 
 button:SetWidth(172)
 button:SetPoint("TOPLEFT", frame1, "TOP", 0, -135)
-button:SetText(MACRO.." |cff00F0F0RaidFramesPlus|r")
+button:SetText(locales[14])
 button:SetScript("OnClick", function(self)
 	if InCombatLockdown() then print(ERR_NOT_IN_COMBAT) return end
 	local index = GetMacroIndexByName("RaidFramesPlus")
