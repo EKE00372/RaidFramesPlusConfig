@@ -1,1 +1,13 @@
+## Interface: 100100
+## Title: RaidFramesPlusConfig
+## Author: Taudier
+## Dependencies: RaidFramesPlus
+## LoadOnDemand: 1
 
+Locales\frFR.lua
+Locales\enUS.lua
+Locales\zhCN.lua
+Locales\zhTW.lua
+
+Locales\soup.lua
+RaidFramesPlusConfig.lua
